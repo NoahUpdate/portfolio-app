@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-light: #f5f3f0;
+  --color-dark: #232121;
+  --color-card-l1: #edebe8;
+  --font-text: var(--font-text1);
+  --breakpoint-sm: 320px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1920px;
+  --font-mediumS: 'Sofia-Pro-Medium';
+  --font-regularS: 'Sofia-Pro-Regular';
+  --font-lightS: 'Sofia-Pro-Light';
+}
+
+@font-face {
+  font-family: 'Aeonik-Medium';
+  src: url('/fonts/Aeonik-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Aeonik-Regular';
+  src: url('/fonts/Aeonik-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sofia-Pro-Light';
+  src: url('/fonts/Sofia-Pro-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Sofia-Pro-Medium';
+  src: url('/fonts/Sofia\ Pro\ Medium\ Az.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Sofia-Pro-Regular';
+  src: url('/fonts/Sofia\ Pro\ Regular\ Az.otf') format('opentype');
+}
+
+h1 {
+  font-family: 'Aeonik-Medium';
+  /* font-size: 110px; */
+  /* letter-spacing: 2px; */
+  line-height: 90%;
+  text-indent: 0px;
+  /* -webkit-text-stroke: 1px white; */
+}
+
+h2 {
+  font-family: 'Aeonik-Regular';
+  font-size: 40px; /* Tamaño de fuente */
+  letter-spacing: 2px;
+  line-height: 150%;
+}
+
+h3 {
+  font-family: 'Aeonik-Medium';
+  font-size: 24px; /* Tamaño de fuente */
+  letter-spacing: 2px;
+  line-height: 150%;
+}
+
+.text1 {
+  font-family: 'Sofia-Pro-Medium';
+  font-size: 24px;
+  /* letter-spacing: -1px; */
+  line-height: 140%;
+}
+
+.text2 {
+  font-family: 'Sofia-Pro-Regular';
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 120%;
+}
+
+.descriptive {
+  font-family: 'Sofia-Pro-Light';
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 140%;
+}
+
+html {
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  scroll-behavior: smooth;
+}
+
+.dark {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
