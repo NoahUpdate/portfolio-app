@@ -26,7 +26,7 @@ export default tseslint.config(
       // a11y (accessibility
       jsxA11y.flatConfigs.recommended,
       // prettier
-      prettier,
+      prettier
       // 'plugin:prettier/recommended'
     ],
     languageOptions: {

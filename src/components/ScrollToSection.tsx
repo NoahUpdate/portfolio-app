@@ -9,10 +9,15 @@ const ScrollToSection = () => {
     const sectionId = location.hash
     if (sectionId) {
       const element = document.querySelector(sectionId)
+
       if (element) {
-        element.scrollIntoView({
-          behavior: 'smooth'
-        })
+        if (element.id === 'home') {
+          window.scroll(0, 0)
+        } else {
+          element.scrollIntoView({
+            behavior: 'smooth'
+          })
+        }
       }
     }
   }, [location])

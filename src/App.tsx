@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Navbutton } from './components/Navbutton'
 import './App.css'
 import { Link } from 'react-router'
+import { MenuIcon } from './components/MenuIcon'
+import { MdLightMode, MdDarkMode } from 'react-icons/md'
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -30,8 +32,28 @@ function App() {
     { name: 'CONTACTS', path: '#contacts' }
   ]
 
+  const [showMenuIcon, setShowMenuIcon] = useState(false)
+
+  const handleMenuIcon = () => {
+    if (window.scrollY > 50) {
+      setShowMenuIcon(!showMenuIcon)
+    } else {
+      setShowMenuIcon(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleMenuIcon)
+    return () => {
+      window.removeEventListener('scroll', handleMenuIcon)
+    }
+  }, [])
+
   return (
     <>
+      <div className="z-0 bottom-5 left-5 fixed">
+        {showMenuIcon && <MenuIcon />}
+      </div>
       <div className="h-dvh py-7 max-md:px-15 md:w-10/12 md:mx-auto">
         <nav className="flex pb-4 justify-between">
           <Link to="/">
@@ -51,7 +73,10 @@ function App() {
           </ul>
         </nav>
 
-        <section className="w-full h-[calc(100dvh-100px)] flex py-10">
+        <section
+          id="home"
+          className="w-full h-[calc(100dvh-90px)] border border-amber-950 flex  py-10"
+        >
           <div className="w-1/2 text-[1.264vw]">
             <p className="py-1.5 px-3 w-fit text2 border rounded-3xl border-dark dark:border-light ml-auto mr-1.5 mt-20">
               JUNIOR
@@ -67,15 +92,17 @@ function App() {
               <div className="w-1/2 descriptive ">
                 <p className="md:text-[16px]">
                   Hi there! <br /> My name is Edward and I’m 30 years old
-                  ambitious junior front-end developer. Now I’m looking for a
-                  new position and new challenges.
+                  ambitious junior ambitious junior ambitious junior ambitious
+                  junior front-end developer. Now I’m new position and new
+                  challenges.
                 </p>
               </div>
               <div className="w-1/2 descriptive">
                 <p className="md:text-[16px]">
                   My goal is to learn something new every day, improve my skills
-                  and solve users and business issues. I can quickly analyze
-                  problems and solve them both independently and in a team.
+                  and solve and solve users and business issues. I can quickly
+                  analyze problems and solve them both independently and in a
+                  team.
                 </p>
               </div>
             </div>
@@ -96,7 +123,7 @@ function App() {
         >
           <div className="w-1/2">
             <img
-              src="public/images/ed.jpeg"
+              src="/images/ed.jpeg"
               alt="Edward"
               className="object-cover w-2/3 h-full rounded-4xl"
             />
@@ -106,22 +133,22 @@ function App() {
             <div className="my-20 ">
               <p className="font-lightS leading-8">
                 Hi there, my name is Edward, I am 24 years old. <br /> Even from
-                a young age, I liked computer technology. I was always
+                a young a young age, I liked computer technology. I was always
                 interested in the news and trends of IT technologies with great
                 pleasure. <br /> These I realized that I really want to develop
                 myself in the IT direction because this field is developing very
                 dynamically and I wanted to keep up with the times. <br /> The
                 further I went, the more inspiration and the desire to study
-                programming in more depth came to me. <br /> <br /> I am an
-                open-minded and determined person, I learn quickly, I like to
-                learn new things. <br /> My hobbies are computer diagnostics of
-                cars, traveling, wakeboarding, and active pastime. <br /> I
+                study programming in more depth came to me. <br /> <br /> I am
+                an an open-minded and determined person, I learn quickly, I like
+                to learn new things. <br /> My hobbies are computer diagnostics
+                of cars, traveling, wakeboarding, and active pastime. <br /> I
                 believe that working for you, I will be able to bring something
                 new and useful to your teams. In turn, I will apply all my
                 knowledge so that the company becomes even more promising, and
                 the team becomes even more productive and friendly, since I am a
-                person who will always bring with a good mood and motivation to
-                work. <br /> I'm a real team player.
+                person who will always bring with a good mood and work. <br />
+                I&apos;m a real team player.
               </p>
             </div>
 
@@ -130,6 +157,7 @@ function App() {
             </button>
           </div>
         </section>
+
         <section
           id="projects"
           className="w-full h-dvh border border-amber-950 flex py-10"
@@ -161,7 +189,7 @@ function App() {
                 knowledge so that the company becomes even more promising, and
                 the team becomes even more productive and friendly, since I am a
                 person who will always bring with a good mood and motivation to
-                work. <br /> I'm a real team player.
+                work. <br /> I&apos;m a real team player.
               </p>
             </div>
 
@@ -172,10 +200,10 @@ function App() {
         </section>
 
         <button
-          className=" absolute z-0 top-200 left-60 text-sm descriptive border-2 p-1 rounded-xl ml-50 hover:bg-black hover:text-white"
+          className="z-0 bottom-5 right-5 fixed !text-3xl descriptive text-[#656464] cursor-pointer dark:hover:text-light transition-all duration-500 hover:text-dark"
           onClick={toggleTheme}
         >
-          Current Theme: {theme}
+          {theme === 'light' ? <MdDarkMode /> : <MdLightMode />}
         </button>
       </div>
     </>
